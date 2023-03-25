@@ -1,0 +1,21 @@
+/* customized */
+.add-card{
+    width:  16.5rem;
+    height: 20.2rem;
+    margin-top: 65px;
+    /* padding-top: 95px; */
+}
+
+.btn-content{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addEmpl-card{
+    width: 10em;
+    height: 10em;
+    box-shadow: 0 0 5px 0px gray;
+}

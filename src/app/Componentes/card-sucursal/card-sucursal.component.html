@@ -1,0 +1,66 @@
+<!-- this is a Horizontal card sample-->
+
+<!--
+public idSucursal: number,
+public nombre: string,
+public direccion: string,
+public idUsuarioEmpAsignado: number,
+public idPedidos: number[],
+public idPromotoresUsr: number[]
+-->
+<mat-card class="card-container" fxLayout="column" fxLayoutAlign="end">
+  <mat-card-header>
+    <mat-card-title class="no-margin">
+      <h2 class="no-margin">{{ sucursal.nombre }}</h2>
+    </mat-card-title>
+    <mat-card-subtitle>{{ sucursal.idUsuarioEmpAsignado }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    {{ sucursal.direccion }}
+    <mat-divider></mat-divider>
+  </mat-card-content>
+
+  <mat-card-actions class="no-margin">
+    <div fxLayout="row">
+      <div fxFlex="70">
+        <h4>pedidos 25</h4>
+      </div>
+      <div fxFlex fxLayoutAlign="space-evenly">
+        <button mat-mini-fab color="accent" (click)="$event.stopPropagation()">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn" (click)="$event.stopPropagation()">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>
+
+<!-- <mat-card
+  style="
+    width: 19vw;
+    height: 25vw;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  "
+>
+  <img src="assets/card-img-1.jpg" alt="" style="width: 100%; height: auto" />
+  <div fxLayout="row wrap" fxLayout.xs="column" style="padding: 7px 10px">
+    <mat-card-title-group>
+      <mat-card-title>
+        <h3>SUCURSAL 20 DE OCTUBRE:</h3>
+      </mat-card-title>
+      <mat-card-subtitle>Asignado: ingrid calizaya</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      Direccion: av. 20 de octubre esquina simon cesar chinpandolfo
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-icon-button>Editar</button>
+    </mat-card-actions>
+  </div>
+</mat-card> -->

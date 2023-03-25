@@ -1,0 +1,16 @@
+.clientView{
+    height: 80px;
+    background-color: rgb(237, 237, 237);
+}
+
+h4{
+    margin: 0;
+    padding: 2px 10px;
+}
+
+.client-icon {
+    height: 30px;
+    width: 30px;
+    background-color: gray;
+    border-radius: 50%;
+}

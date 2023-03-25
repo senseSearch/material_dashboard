@@ -1,0 +1,101 @@
+<!-- MODELADO SUGEIDO 
+    file:///D:/HTML%20Workspace/PLANTILLAS/DashBoard/nalika-master/nalika/mailbox.html
+
+    modelo optado por la Simplicidad
+    https://startbootstrap.com/previews/sb-admin-pro
+-->
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5px">
+  <!-- ************************************************************** -->
+  <div
+    fxFlex="24"
+    fxLayout="column"
+    style="border: 2px solid orange"
+    fxLayoutGap="10px"
+  >
+    <div fxFlex>
+      <mat-expansion-panel hideToggle (opened)="loadEmployes()">
+        <mat-expansion-panel-header>
+          Nueva Sucursal
+        </mat-expansion-panel-header>
+
+        <div fxLayout="column">
+          <mat-form-field appearance="fill">
+            <mat-label>Nombre de Sucursal</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Direccion</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Encargado">
+              <mat-option
+                *ngFor="let empleado of empleados"
+                [value]="empleado.nombres"
+              >
+                {{ empleado.nombres }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-action-row style="padding: 10px 0">
+          <button
+            mat-stroked-button
+            style="width: 100%; margin: 0; border-radius: 0"
+          >
+            Añadir Sucursal
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </div>
+
+    <div
+      fxLayout="column"
+      fxLayout.xs="row"
+      fxLayoutGap="3px"
+      class="side-Subcontent"
+    >
+      <app-card-sucursal
+        fxFlex
+        *ngFor="let sucursal of sucursales"
+        [sucursal]="sucursal"
+        style="padding-bottom: 10px"
+      >
+      </app-card-sucursal>
+    </div>
+  </div>
+
+  <div fxFlex fxLayout="column">
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+      <a
+        mat-tab-link
+        routerLink="layout-a"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+        >Estadisticas</a
+      >
+      <a
+        mat-tab-link
+        routerLink="layout-b"
+        routerLinkActive
+        #rlb="routerLinkActive"
+        [active]="rlb.isActive"
+        >Pedidos</a
+      >
+    </nav>
+
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet
+    ></mat-tab-nav-panel>
+    <!-- <app-card-sucursal
+      *ngFor="let sucursal of sucursales"
+      [sucursal]="sucursal"
+      style="padding-bottom: 20px"
+    >
+    </app-card-sucursal> -->
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.dirContainer {
+    height: 50px; scroll-behavior: smooth; overflow: hidden;
+}
+
+mat-selection-list {
+    transform: scale(0.7);
+    margin: 0;
+    padding: 0;
+}

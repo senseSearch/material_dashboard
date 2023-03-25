@@ -1,0 +1,99 @@
+<!-- this is a Horizontal card sample-->
+
+<mat-card>
+  <div fxLayout="row wrap" fxLayout.xs="column">
+    <!-- Visualizacino en pantalla grande -->
+    <div fxFlex fxLayout="row" *ngIf="!smallWidthScreen()">
+      <div fxFlex="18" fxFlex.xs="110px">
+        <img
+          src="assets/card-img-1.jpg"
+          alt=""
+          style="width: 100%; height: auto"
+        />
+      </div>
+      <span fxFlex="1.5"></span>
+      <div fxFlex fxLayout="column">
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2 style="margin: 0; line-height: 1.2em">
+              Nombre: del cliente seleccionado
+            </h2>
+          </mat-card-title>
+          <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+          <button mat-stroked-button>Editar</button>
+        </mat-card-title-group>
+
+        <mat-card-content style="margin: 0">
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
+            <div fxFlex="60">
+              <app-direccion-selec> </app-direccion-selec>
+            </div>
+            <div fxFlex="12">
+              <h4>Telefono 65643213</h4>
+            </div>
+            <div fxFlex fxLayout="row">
+              <h4>Contador:</h4>
+              <h4>tefono Contador</h4>
+            </div>
+          </div>
+          <!-- {{longText}} -->
+        </mat-card-content>
+      </div>
+    </div>
+
+    <!-- Visualizacino en pantalla chica responsive-->
+    <div fxLayout="row wrap" fxLayout.xs="column" *ngIf="smallWidthScreen()">
+      <div fxFlex fxLayout="row">
+        <div fxFlex="30" fxFlex.xs="110px">
+          <img
+            src="assets/card-img-1.jpg"
+            alt=""
+            style="width: 100%; height: auto"
+          />
+        </div>
+        <span fxFlex="3"></span>
+        <div fxFlex>
+          <mat-card-title-group>
+            <mat-card-title>
+              <h2 style="margin: 0; line-height: 1.2em">
+                Nombre: del cliente seleccionado
+              </h2>
+            </mat-card-title>
+            <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+          </mat-card-title-group>
+        </div>
+      </div>
+
+      <div fxFlex>
+        <mat-card-content style="margin: 0">
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
+            <div fxFlex="60">
+              <app-direccion-selec> </app-direccion-selec>
+            </div>
+            <div fxFlex="12">
+              <h4>Telefono 65643213</h4>
+            </div>
+            <div fxFlex fxLayout="row">
+              <h4>Contador:</h4>
+              <h4>tefono Contador</h4>
+            </div>
+          </div>
+          <!-- {{longText}} -->
+        </mat-card-content>
+      </div>
+    </div>
+  </div>
+
+  <!-- visualizacion de modelos -->
+  <div fxLayout="row">
+    <mat-tab-group mat-align-tabs="start" style="width: 100%">
+      <mat-tab label="MODELOS">
+        <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+        </div>
+      </mat-tab>
+      <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>

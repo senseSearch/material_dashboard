@@ -1,0 +1,24 @@
+<!-- <mat-form-field appearance="fill" [color]="colorControl.value">
+    <mat-label>Direccion</mat-label>
+    <mat-select [formControl]="colorControl">
+      <mat-option value="primary">Primary</mat-option>
+      <mat-option value="accent">Accent</mat-option>
+      <mat-option value="warn">Warn</mat-option>
+    </mat-select>
+  </mat-form-field>
+    -->
+<div fxLayout="column">
+  <div fxFlex>
+    <mat-form-field style="height: 40px">
+      <mat-select [(value)]="selectIndex">
+        <mat-option *ngFor="let suc of sucursales" [value]="suc.index">
+          {{ suc.sucursal }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div fxFlex style="overflow-x: calc(50%, 20%)">
+    <!-- <h4>{{ selectedSuc }}</h4> -->
+    <h4>{{ dirSucSelec }}</h4>
+  </div>
+</div>

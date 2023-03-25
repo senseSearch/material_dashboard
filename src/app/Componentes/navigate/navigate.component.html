@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    style="background: rgb(1, 219, 176)"
+  >
+    <mat-toolbar>Económica</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/inicio">Inicio</a>
+      <a mat-list-item routerLink="/sucursales">Sucursales</a>
+      <a mat-list-item routerLink="/empleados">Empleados</a>
+      <a mat-list-item href="#">Productos</a>
+      <!-- sub menu de productos reconfigurar -->
+      <a mat-list-item routerLink="/talonarios">• Talonarios</a>
+      <a mat-list-item routerLink="/materialOficina">• Material de Oficina</a>
+      <!-- ---  -->
+      <a mat-list-item routerLink="/clientes">Clientes</a>
+      <a mat-list-item routerLink="/pedidos">Pedidos</a>
+      <a mat-list-item href="#">Balance</a>
+      <a mat-list-item routerLink="/pruebas">Pruebas</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" style="position: sticky">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <!-- <span>Busqueda</span> -->
+        <app-dialog></app-dialog>
+      </div>
+    </mat-toolbar>
+    <!-- 
+      usar el div en caso de usar mat-toolbar con posicion fija 
+      <div style="width: 100%; height: 55px"></div> -->
+    <!-- <div style="width: 100%; height: calc(100% - 220px)"></div> -->
+
+    <!-- Add Content Here -->
+    <div [ngStyle]="{ padding: '20px' }" ngStyle.xs="padding: 10px">
+      <router-outlet> </router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

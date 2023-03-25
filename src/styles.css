@@ -1,0 +1,21 @@
+/* importando material-icons */
+@import 'material-icons/iconfont/material-icons.css';
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;background-color: gray}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif}
+
+/* importando fuente tipografica lanza error al compilar
+    @font-face {
+    font-family: "Bebas Neue Pro";
+    src: local("Bebas Neue Pro Regular") url(./assets/fonts/Bebas_Neue_Pro.otf) format("truetype");
+} */
+
+.mat-button,
+.mat-flat-button,
+.mat-stroked-button {
+    border-radius: 50px;
+    /* background: linear-gradient( rgb(200, 0, 255), red); */
+    background-color: rgb(235, 235, 235);
+}

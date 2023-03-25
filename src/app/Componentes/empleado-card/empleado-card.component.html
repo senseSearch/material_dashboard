@@ -1,0 +1,41 @@
+<!--
+    idEmpleado: number,
+    nombres: string,
+    apellidos: string,
+    cargo: string,
+    idSucursal: number,
+    fInicio: Date,
+    fFin: Date,
+    salario: number,
+    permisosUsr: string,
+    idAsistencias: number
+-->
+
+<mat-card class="empl-card">
+  <div class="empl-img"></div>
+  <mat-card-header>
+    <mat-card-title>
+      <h2>nombre y apellidos</h2>
+    </mat-card-title>
+    <mat-card-subtitle> cargo </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <h4>lugar de trabajo asignado</h4>
+    <h4>fecha de inicio</h4>
+    <h4>*salario</h4>
+    permisos de usuario
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <div fxFlex>
+        <button mat-stroked-button color="accent">Asistencia</button>
+      </div>
+      <div fxFlex fxLayoutAlign="space-evenly" style="background-color: azure">
+        <button mat-mini-fab color="accent"><mat-icon>edit</mat-icon></button>
+        <button mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

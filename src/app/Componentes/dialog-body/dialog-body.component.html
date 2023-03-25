@@ -1,0 +1,22 @@
+<div flexLayout fxLayout="column" fxLayoutAlign="space-between">
+  <h4 mat-dialog-title fxLayoutAlign="center start" class="dialogHead">
+    <mat-form-field fxFlex="50" fxFlex.xs="100">
+      <input matInput placeholder="Busqueda Nombre / Nit" />
+    </mat-form-field>
+  </h4>
+
+  <h4 mat-dialog-title fxLayoutAlign="start start">
+    Aqui viene el contenido de Cliente
+  </h4>
+
+  <mat-dialog-content>
+    <app-mi-card></app-mi-card>
+    <!-- <app-mi-panel *ngFor="let names of cardLists"></app-mi-panel> -->
+    <!-- <app-client-form></app-client-form> -->
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Cerrar</button>
+    <button class="mat-raised-button" (click)="close()">Aceptar</button>
+  </mat-dialog-actions>
+</div>

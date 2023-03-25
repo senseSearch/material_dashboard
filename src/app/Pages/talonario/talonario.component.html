@@ -1,0 +1,179 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5x">
+  <div
+    fxFlex="30"
+    fxLayout="column"
+    fxLayoutGap="15px"
+    ngClass.xs="scroll-content"
+    style="border: solid orange 2px"
+  >
+    <span fxLayout.xs="100%" fxLayout="row" class="prise-card">
+      <h1>Bs.</h1>
+      00,00
+    </span>
+    <div fxFlex fxLayout="column" fxLayoutGap="15px">
+      <label for="label" class="tittle">Tamaño</label>
+      <div
+        fxLayout="row wrap"
+        fxLayoutGap="10px grid"
+        fxLayoutAlign="flex-start"
+      >
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" checked />
+          <div class="radio-card-v1">Cuarto Oficio</div>
+        </label>
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" />
+          <div class="radio-card-v1">Medio Oficio</div>
+        </label>
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" />
+          <div class="radio-card-v1">Prevalorada</div>
+        </label>
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" />
+          <div class="radio-card-v1">Carta</div>
+        </label>
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" />
+          <div class="radio-card-v1">Memo</div>
+        </label>
+        <label fxFlex>
+          <input type="radio" name="f-tamaño" />
+          <div class="radio-card-v1">Oficio</div>
+        </label>
+      </div>
+    </div>
+
+    <div fxFlex fxLayout="column" fxLayoutGap="15px">
+      <label for="label" class="tittle">Papel Original</label>
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="5px">
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="papel" checked />
+            <div class="radio-card-v1">Bond</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="papel" />
+            <div class="radio-card-v1">Couche</div>
+          </label>
+        </div>
+
+        <mat-divider fxFlex vertical></mat-divider>
+
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="grameje" checked />
+            <div class="radio-card-v1">75 g</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="grameje" checked />
+            <div class="radio-card-v1">80 g</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="grameje" />
+            <div class="radio-card-v1">90 g</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="grameje" checked />
+            <div class="radio-card-v1">95 g</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="grameje" />
+            <div class="radio-card-v1">115 g</div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="10px">
+      <div fxLayout="column" fxLayoutGap="10px">
+        <label for="label" class="tittle">Papel Copia</label>
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="material" checked />
+            <div class="radio-card-v1">Normal</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="material" />
+            <div class="radio-card-v1">Quimico</div>
+          </label>
+        </div>
+      </div>
+
+      <mat-divider vertical fxFlex></mat-divider>
+
+      <div fxLayout="column" fxLayoutGap="7px">
+        <label for="label" class="tittle">Cantidad de Copias</label>
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="copias" checked />
+            <div class="radio-card-v1">1 Copia</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="copias" />
+            <div class="radio-card-v1">2 Copias</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="copias" />
+            <div class="radio-card-v1">3 Copias</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="copias" />
+            <div class="radio-card-v1">4 Copias</div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider fxFlexAlign="center"></mat-divider>
+
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="15px">
+      <div fxLayout="column" fxLayoutGap="10px">
+        <label for="label" class="tittle">Impresion de Anverso</label>
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="N-Color" checked />
+            <div class="radio-card-v1">1 Color</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="N-Color" />
+            <div class="radio-card-v1">2 Colores</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="N-Color" />
+            <div class="radio-card-v1">3 Colores</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="N-Color" />
+            <div class="radio-card-v1">Ful Color</div>
+          </label>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="10px" *ngIf="false">
+        <label for="label" class="tittle">Impresion de Reverso</label>
+        <div fxLayout="row wrap" fxLayoutGap="10px grid">
+          <label fxFlex>
+            <input type="radio" name="imp-reverso" checked />
+            <div class="radio-card-v1">Null</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="imp-reverso" />
+            <div class="radio-card-v1">1 Color</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="imp-reverso" />
+            <div class="radio-card-v1">2 Colores</div>
+          </label>
+          <label fxFlex>
+            <input type="radio" name="imp-reverso" />
+            <div class="radio-card-v1">Full Color</div>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div fxFlex>
+    <app-table></app-table>
+  </div>
+</div>

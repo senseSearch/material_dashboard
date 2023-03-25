@@ -1,0 +1,33 @@
+[{
+    "idCliente": 10,
+    "idSucursal": 10,
+    "idProducto": 10,
+
+    "idPedido": 10,
+    
+    "cantidad": 20,
+    "adelantoProd": 5,
+    "fechaPedido": null,
+    "horaPedido": "",
+    "fechaEntrega": "",
+    "horaEntrega": "",
+    "estado": "proceso",
+    "anticipo": 250,
+    "montoTotal": 950
+},{
+    "idCliente": 11,
+    "idSucursal": 11,
+    "idProducto": 11,
+
+    "idPedido": 11,
+    
+    "cantidad": 200,
+    "adelantoProd": 50,
+    "fechaPedido": null,
+    "horaPedido": "",
+    "fechaEntrega": "",
+    "horaEntrega": "",
+    "estado": "proceso",
+    "anticipo": 1500,
+    "montoTotal": 6000
+}]

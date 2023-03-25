@@ -1,0 +1,12 @@
+.card-container{
+    width: inherit;
+    /* width: 21.5rem; */
+    height: 12rem;
+    border-radius: 10px;
+    /* overflow: hidden */
+}
+
+.no-margin{
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,33 @@
+/* custom */
+.side-Subcontent{
+    height: calc(100vh - 169px);
+    overflow: auto;
+    visibility: hidden;
+}
+
+app-card-sucursal, .side-Subcontent:hover, .side-Subcontent:focus {
+    visibility: visible;
+    transition: visibility 2s;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar:hover,::-webkit-scrollbar:focus {
+    visibility: visible;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(46, 46, 46, 0.098);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: rgb(44, 44, 44);
+    display: show;
+}

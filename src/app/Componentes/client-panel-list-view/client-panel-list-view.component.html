@@ -1,0 +1,56 @@
+<mat-expansion-panel class="panel">
+  <mat-expansion-panel-header class="clientView">
+    <div fxFlex="100" fxLayout="row">
+      <div fxFlex="3.5" class="client-icon"></div>
+      <div fxFlex="30" fxLayout="column">
+        <h4>{{ cliente.nombres }} {{ cliente.apellidos }}</h4>
+        <h4>Nit: {{ cliente.nit }}</h4>
+      </div>
+      <div fxFlex fxLayout="column">
+        <h4>Celular: {{ cliente.celular }}</h4>
+        <h4>Cant. Sucursales:</h4>
+      </div>
+      <div fxFlex fxLayout="column">
+        <h4>Modelos: {{ cantMod }}</h4>
+        <h4>Pedidos: {{ cantPed }}</h4>
+      </div>
+      <div fxFlex fxLayout="column">
+        <h4>Contador: {{ cliente.contador }}</h4>
+        <h4>Telefono:</h4>
+      </div>
+      <div fxFlex="10" fxLayout="column">
+        <h4>Acciones:</h4>
+      </div>
+    </div>
+  </mat-expansion-panel-header>
+
+  <!-- *************** contenido de panel *************** -->
+  <mat-panel-description>
+    <div flexLayout="row">
+      <div fxLayout="row">
+        <mat-tab-group mat-align-tabs="start" style="width: 100%">
+          <mat-tab label="MODELOS">
+            <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+              <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+              <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+            </div>
+          </mat-tab>
+          <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+        </mat-tab-group>
+      </div>
+
+      <div fxFlex="450px" flexLayout="column">
+        <mat-form-field style="height: 40px">
+          <mat-select [(value)]="selectIndex">
+            <mat-option *ngFor="let suc of sucursales" [value]="suc.index">
+              {{ suc.sucursal }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div style="height: 7vw">
+          <h4>{{ dirSucSelec }}</h4>
+        </div>
+      </div>
+    </div>
+  </mat-panel-description>
+</mat-expansion-panel>

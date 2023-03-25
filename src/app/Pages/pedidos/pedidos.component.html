@@ -1,0 +1,12 @@
+<div fxLayout="column" fxLayoutAlign="start">
+  <h1 class="mat-h1">lista de pedidos</h1>
+
+  <!-- here startin my card -->
+  <mat-accordion>
+    <app-mi-panel
+      *ngFor="let pedido of pedidos"
+      [pedido]="pedido"
+    ></app-mi-panel>
+  </mat-accordion>
+  <app-pedido-form></app-pedido-form>
+</div>

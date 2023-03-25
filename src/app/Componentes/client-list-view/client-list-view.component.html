@@ -1,0 +1,41 @@
+<mat-selection-list [multiple]="false" style="margin: 1px 0px; padding: 0">
+  <mat-list-option class="clientView">
+    <div fxLayout="row">
+      <div fxFlex="3.5" class="client-icon"></div>
+      <div fxFlex="30" fxLayout="column">
+        <h4>{{ cliente.nombres }} {{ cliente.apellidos }}</h4>
+        <h4>Nit: {{ cliente.nit }}</h4>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div fxFlex fxLayout="column">
+        <h4>Celular: {{ cliente.celular }}</h4>
+      </div>
+      <mat-divider [vertical]="true"></mat-divider>
+      <div fxFlex fxLayout="column">
+        <h4>Contador: {{ cliente.contador }}</h4>
+        <h4>Telefono:</h4>
+      </div>
+      <div fxFlex fxLayout="column">
+        <h4>Modelos: {{ cantMod }}</h4>
+        <h4>Pedidos: {{ cantPed }}</h4>
+      </div>
+      <div fxFlex="10" fxLayout="column" style="background-color: gray">
+        <h4>Acciones:</h4>
+      </div>
+    </div>
+  </mat-list-option>
+</mat-selection-list>
+
+<!-- 
+      public nombres: string,
+      public apellidos: string,
+      public nit: number,
+      public celular: number,
+      public direcciones: string[],
+      public actividad: string,
+      public descripcion: string,
+
+      public contador: string,
+      public modelos: string[],
+      public pedidos: number[]
+-->

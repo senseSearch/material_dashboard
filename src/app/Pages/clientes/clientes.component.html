@@ -1,0 +1,24 @@
+<!-- <app-mi-card style="position: fixed; z-index: 90"></app-mi-card> 
+<div style="width: 100%; height: 270px"></div>
+-->
+
+<div fxLayout="column" fxLayoutAlign="start">
+  <h1 fxLayoutAlign="start start">realizar cambios:</h1>
+
+  <!-- <app-client-form></app-client-form> -->
+
+  <h2 class="mat-h1">colocar la direccion dentro de modelos</h2>
+  <h4>de esa forma cada direccion tendra su modelo "en caso de tenerlo"</h4>
+  <h4>
+    aumentar una pesataña PEDIDOS junto a modelos prueba y mostrar lista de los
+    dos ultimos pedidos y un boton="VER TODOS LOS PEDIDOS"
+  </h4>
+  <!-- lista de clientes -->
+  <mat-accordion>
+    <app-client-panel-list-view
+      *ngFor="let cliente of clientes"
+      [cliente]="cliente"
+    ></app-client-panel-list-view>
+    <!-- <app-mi-panel *ngFor="let pedido of pedidos" [pedido]="pedido"></app-mi-panel> -->
+  </mat-accordion>
+</div>

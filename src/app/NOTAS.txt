@@ -1,0 +1,835 @@
+/*TAREAS NEXT 3 FIVE MINUTES */
+ * crear modelo de pedido
+ * utilizar modelado, vista y trabajar con ellos
+ * crear fake data para las pruebas de inyeccion de datos
+
+
+
+/****************  DICCIONARIO DE DATOS ****************/
+SUCURSAL
+nombres: taller, 20 de octubre, pinos, alexsander, el alto, villa adela, ballivian
+
+
+
+
+//PRODUCT DATA MODEL 
+/**************************************************************************************************/
+
+    "product": [
+        { "product_id": 1, "product_name": "factura", "category_id": 0 },
+        { "product_id": 2, "product_name": "recibo", "category_id": 0 },
+        { "product_id": 3, "product_name": "proforma", "category_id": 0 },
+        { "product_id": 4, "product_name": "membretado", "category_id": 0 },
+        { "product_id": 5, "product_name": "tarjeta", "category_id": 0 }
+    ],
+    "product_properties": [
+        {"price": 60, "product_id": 1, "size_id": 102, "color_id": 101, "grammage_id": 101 },
+        {"price": 70, "product_id": 1, "size_id": 101, "color_id": 101, "grammage_id": 101 },
+        {"price": 90, "product_id": 3, "size_id": 104, "color_id": 102, "grammage_id": 101 },
+        {"price": 250, "product_id": 5, "size_id": 107, "color_id": 104, "grammage_id": 106 }
+    ],
+    "size": [
+        { "size_id": 101, "value": "1/2"},
+        { "size_id": 102, "value": "1/4"},
+        { "size_id": 103, "value": "prevalorada"},
+        { "size_id": 104, "value": "carta"},
+        { "size_id": 105, "value": "oficio"},
+        { "size_id": 106, "value": "memo"},
+        { "size_id": 107, "value": "90mm x 50mm"}
+    ],
+    "color": [
+        { "color_id": 101, "value": 1},
+        { "color_id": 102, "value": 2},
+        { "color_id": 103, "value": 3},
+        { "color_id": 104, "value": 4}
+    ],
+    "grammage": [
+        { "grammage_id": 101, "value": 60},
+        { "grammage_id": 102, "value": 80},
+        { "grammage_id": 103, "value": 90},
+        { "grammage_id": 104, "value": 115},
+        { "grammage_id": 105, "value": 215},
+        { "grammage_id": 106, "value": 300}
+    ],
+
+
+    "COMMENT0": "{/*** DEMO VERSION  ***/}",
+    "product_setting_v1": [
+        {"product_type": 100, "setting_ids": [1,2,3,4,5,6,7]},
+        {"product_type": 101, "setting_ids": [1,2,6]},
+        {"product_type": 102, "setting_ids": [1,2,3,6,  8,9,10]}
+    ],
+
+    "product_type": [
+        {"id": 100, "name": "talonario"},
+        {"id": 101, "name": "membretado"},
+        {"id": 102, "name": "tarjeta"}
+    ],
+    "COMMENT1": "{/*** DEMO VERSION  ***/}",
+
+
+    
+
+//MAQUETACION DE PANEL ANTES DE REMPLAZAR DATOS
+/**************************************************************************************************/
+
+<mat-expansion-panel>
+  <!-- *************** contenido de panel *************** -->
+  <mat-expansion-panel-header style="padding: 1.5rem 0.6rem 0.5rem 0.6rem">
+    <div fxFlex fxLayout="row" fxLayout.xs="column">
+      <mat-panel-title fxFlex="30" fxFlex.xs="100" style="margin: 0">
+        <div fxLayout="column" fxLayoutAlign="center stretch">
+          <!-- <mat-icon>account_circle</mat-icon> -->
+          <h3 style="margin: 0">Nombre / Razon Social</h3>
+          <h3>Nit:</h3>
+        </div>
+      </mat-panel-title>
+      <mat-divider [vertical]="true"></mat-divider>
+
+      <mat-panel-description fxFlex="70" fxFlex.xs="100" fxShow fxHide.xs>
+        <div fxFlex fxLayout="row" fxLayout.xs="column">
+          <div fxFlex="25" fxLayout="column">
+            <h3 style="margin: 0">TARJETA PERSONAL</h3>
+            <h3>SUCURSAL</h3>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div fxFlex="25" fxLayout="column" fxLayoutAlign="center">
+            <h3 style="margin: 0">cantidad</h3>
+            <h3>adelantos</h3>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div fxFlex="25" fxLayout="column" fxLayoutAlign="center start">
+            <h3 style="margin: 0">fecha de pedido</h3>
+            <h3>fecha de entrega</h3>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div fxFlex="25" fxLayout="column" fxLayoutAlign="center start">
+            <div fxLayout="row" fxLayoutAlign="center start">
+              <button mat-icon-button (click)="moveUp($event)">
+                <mat-icon>arrow_upward</mat-icon>
+              </button>
+              <button mat-icon-button (click)="$event.stopPropagation()">
+                <mat-icon>arrow_downward</mat-icon>
+              </button>
+              <button
+                mat-icon-button
+                color="warn"
+                (click)="$event.stopPropagation()"
+              >
+                <mat-icon>clear</mat-icon>
+              </button>
+              <button color="primary" mat-flat-button (click)="msg($event)">
+                estado
+              </button>
+            </div>
+          </div>
+        </div>
+      </mat-panel-description>
+    </div>
+  </mat-expansion-panel-header>
+
+  <!-- *************** contenido de panel *************** -->
+
+  <mat-panel-description>
+    <mat-panel-title>
+      <mat-list-item> <h2>mat description</h2></mat-list-item>
+    </mat-panel-title>
+
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Age</mat-label>
+      <input matInput type="number" min="1" />
+    </mat-form-field>
+  </mat-panel-description>
+</mat-expansion-panel>
+
+
+
+
+//MAQUETACION component "form" inicial 
+
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>formulario de pedido</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <mat-radio-group formControlName="shipping">
+          <mat-radio-button value="free">Free Shipping</mat-radio-button>
+          <mat-radio-button value="priority"
+            >Priority Shipping</mat-radio-button
+          >
+          <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Compañia" formControlName="Compañia" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombres" formControlName="Nombres" />
+            <mat-error
+              *ngIf="addressForm.controls['firstName'].hasError('required')"
+            >
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Last name"
+              formControlName="lastName"
+            />
+            <mat-error
+              *ngIf="addressForm.controls['lastName'].hasError('required')"
+            >
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Address"
+              formControlName="address"
+            ></textarea>
+            <mat-error
+              *ngIf="addressForm.controls['address'].hasError('required')"
+            >
+              Address is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" *ngIf="!hasUnitNumber">
+        <div class="col">
+          <button
+            mat-button
+            type="button"
+            (click)="hasUnitNumber = !hasUnitNumber"
+          >
+            + Add C/O, Apt, Suite, Unit
+          </button>
+        </div>
+      </div>
+      <div class="row" *ngIf="hasUnitNumber">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea
+              matInput
+              placeholder="Address 2"
+              formControlName="address2"
+            ></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city" />
+            <mat-error
+              *ngIf="addressForm.controls['city'].hasError('required')"
+            >
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option
+                *ngFor="let state of states"
+                [value]="state.abbreviation"
+              >
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="addressForm.controls['state'].hasError('required')"
+            >
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              #postalCode
+              maxlength="5"
+              placeholder="Postal Code"
+              type="number"
+              formControlName="postalCode"
+            />
+            <mat-hint align="end">{{ postalCode.value.length }} / 5</mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="shipping">
+            <mat-radio-button value="free">Free Shipping</mat-radio-button>
+            <mat-radio-button value="priority"
+              >Priority Shipping</mat-radio-button
+            >
+            <mat-radio-button value="nextday"
+              >Next Day Shipping</mat-radio-button
+            >
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+
+TARJETA DE CLIENTE TEMP SAVE
+/*************************************************************************************************
+<!-- this is a Horizontal card sample-->
+<mat-card style="background-color: beige">
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex fxLayout="row">
+      <div fxFlex="20" fxFlex.sm="110px">
+        <img
+          src="assets/card-img-1.jpg"
+          alt=""
+          style="width: 100%; height: auto"
+        />
+      </div>
+      <span fxFlex="3"></span>
+      <div fxFlex>
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2 style="margin: 0; line-height: 1.3em">
+              Nombre: del cliente seleccionado
+            </h2>
+          </mat-card-title>
+          <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+        </mat-card-title-group>
+      </div>
+    </div>
+    <div fxFlex>
+      <mat-card-content style="margin: 0">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
+          <div fxLayout="row">
+            <h4>
+              Av. buenos aires zona san martin de porras nro 400 entre av. juan
+              jacinto la paz - bolivia
+            </h4>
+            <h4>Telefono</h4>
+          </div>
+          <div fxLayout="row">
+            <h4>Contador:</h4>
+            <h4>tefono Contador</h4>
+          </div>
+        </div>
+        <!-- {{longText}} -->
+      </mat-card-content>
+    </div>
+  </div>
+  <div fxLayout="row">
+    <mat-tab-group
+      mat-align-tabs="start"
+      style="min-height: 170px; width: 100%"
+    >
+      <mat-tab label="MODELOS">
+        <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+        </div>
+      </mat-tab>
+      <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
+
+//modificacion 2
+/************************************************
+<!-- this is a Horizontal card sample-->
+<mat-card style="background-color: beige">
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="20">
+      <img
+        src="assets/card-img-1.jpg"
+        alt=""
+        class="card-clienteimage"
+      />
+    </div>
+    <span fxFlex="1"></span>
+    <div fxFlex fxLayout="column">
+      <div fxLayout="row">
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2 style="margin: 0; line-height: 1.3em">
+              Nombre: del cliente seleccionado
+            </h2>
+          </mat-card-title>
+          <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+        </mat-card-title-group>
+      </div>
+      <div fxLayout="row">
+        <mat-card-content fxFlex="72" style="margin: 0">
+          <div
+            fxLayout="row"
+            fxLayout.xs="column"
+            fxLayoutAlign="start"
+            style="text-align: left"
+          >
+            <h4 fxFlex="65">
+              Av. buenos aires zona san martin de porras nro 400 entre av. juan
+              jacinto la paz - bolivia
+            </h4>
+            <h4 fxFlex>Telefono</h4>
+          </div>
+          <!-- {{longText}} -->
+        </mat-card-content>
+        <div fxFlex fxLayout="column">
+          <h4>Contador:</h4>
+          <h4>tefono Contador</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <mat-tab-group
+      mat-align-tabs="start"
+      style="min-height: 170px; width: 100%"
+    >
+      <mat-tab label="MODELOS">
+        <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+        </div>
+      </mat-tab>
+      <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
+
+
+
+********************************************************************************
+<!-- this is a Horizontal card sample-->
+<mat-card style="background-color: beige">
+  <div fxLayout wrap fxLayoutGap="2px">
+    <div fxFlex.xs="1 1 calc(33%)" style="background-color: aquamarine">
+      <img src="assets/card-img-1.jpg" alt="" class="card-clienteimage" />
+    </div>
+    <span fxFlex.xs="2px" style="background-color: aqua"></span>
+    <div fxFlex.xs="1 1 calc(80%)">
+      <mat-card-title-group fxLayout="row">
+        <mat-card-title>
+          <h2 style="margin: 0; line-height: 1.3em">
+            Nombre: del cliente seleccionado
+          </h2>
+        </mat-card-title>
+        <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+      </mat-card-title-group>
+    </div>
+    <div fxFlex.xs="2 2 calc(100%)">
+      <mat-card-content fxLayout="row" fxFlex="72" style="margin: 0">
+        <div
+          fxLayout="row"
+          fxLayout.xs="column"
+          fxLayoutAlign="start"
+          style="text-align: left"
+        >
+          <h4 fxFlex="65">
+            Av. buenos aires zona san martin de porras nro 400 entre av. juan
+            jacinto la paz - bolivia
+          </h4>
+          <h4 fxFlex>Telefono</h4>
+        </div>
+        <!-- {{longText}} -->
+      </mat-card-content>
+      <div fxFlex fxLayout="column">
+        <h4>Contador:</h4>
+        <h4>tefono Contador</h4>
+      </div>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <mat-tab-group
+      mat-align-tabs="start"
+      style="min-height: 170px; width: 100%"
+    >
+      <mat-tab label="MODELOS">
+        <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+        </div>
+      </mat-tab>
+      <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
+
+
+//MODIFICACION PANTALLA RESPONSIVE
+/***********************************************************************************
+<!-- this is a Horizontal card sample-->
+<mat-card style="background-color: beige">
+  <div fxLayout="row wrap" fxLayout.xs="column">
+    <div fxFlex fxLayout="row">
+      <div fxFlex="30" fxFlex.xs="110px">
+        <img
+          src="assets/card-img-1.jpg"
+          alt=""
+          style="width: 100%; height: auto"
+        />
+      </div>
+      <span fxFlex="3"></span>
+      <div fxFlex>
+        <mat-card-title-group>
+          <mat-card-title>
+            <h2 style="margin: 0; line-height: 1.2em">
+              Nombre: del cliente seleccionado
+            </h2>
+          </mat-card-title>
+          <mat-card-subtitle>Nit: del cliente seleccionado</mat-card-subtitle>
+        </mat-card-title-group>
+      </div>
+    </div>
+
+    <div fxFlex>
+      <mat-card-content style="margin: 0">
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start">
+          <div fxLayout="row">
+            <h4>
+              Av. buenos aires zona san martin de porras nro 400 entre av. juan
+              jacinto la paz - bolivia
+            </h4>
+            <h4>Telefono</h4>
+          </div>
+          <div fxLayout="row">
+            <h4>Contador:</h4>
+            <h4>tefono Contador</h4>
+          </div>
+        </div>
+        <!-- {{longText}} -->
+      </mat-card-content>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <mat-tab-group
+      mat-align-tabs="start"
+      style="min-height: 170px; width: 100%"
+    >
+      <mat-tab label="MODELOS">
+        <div fxLayout="row" fxLayoutGap="3px" fxLayoutAlign="start center">
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+          <img src="assets/card-img-1.jpg" alt="" class="card-modelimage" />
+        </div>
+      </mat-tab>
+      <mat-tab label="MODELOS PRUEBA">EJEMPLARES 1</mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-card>
+
+
+
+//DEMOSTRACION CLASE SCROLL
+/*------------------------------------------------------------------------------------------*/
+** html document **
+
+
+<button (click)="goDown1()">Scroll to Red DIV</button>
+<button (click)="goDown2()">Scroll to Green DIV</button>
+<button (click)="goDown3()">Scroll to Blue DIV</button>
+<hello name="{{ name }}"></hello>
+<p id="ini">
+  Start editing to see some magic happen here :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+<hello name="{{ name }}"></hello>
+<div id="targetRed" style="background-color: red;">
+  Scrolled to Red
+</div>
+<button (click)="inicio()">inicio</button>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<div id="targetGreen" style="background-color: green;">
+  Scrolled to Green
+</div>
+<button (click)="inicio()">inicio</button>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<div id="targetBlue" style="background-color: blue;">
+  Scrolled to Blue
+</div>
+<button (click)="inicio()">inicio</button>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+<hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p>
+
+
+
+** component.ts **
+import { ViewportScroller } from '@angular/common';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'my-app',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+})
+export class AppComponent implements OnInit {
+  name = 'Angular ' + VERSION.major;
+  
+  constructor(private scroller: ViewportScroller, private router: Router) {}
+  ngOnInit() {
+    this.router.navigate(['/']);
+  }
+
+  inicio() {
+    this.scroller.scrollToAnchor('ini');
+  }
+
+  goDown1() {
+    this.scroller.scrollToAnchor('targetRed');
+  }
+
+  goDown2() {
+    //this.scroller.scrollToAnchor("targetGreen");
+    document.getElementById('targetGreen').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest',
+    });
+  }
+
+  goDown3() {
+    this.router.navigate([], { fragment: 'targetBlue' });
+  }
+}
+
+
+** module.ts **
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { AppComponent } from "./app.component";
+import { HelloComponent } from "./hello.component";
+import { ExtraOptions, RouterModule, Routes } from "@angular/router";
+
+const routes: Routes = [
+  {
+    path: "",
+    component: AppComponent
+  }
+];
+const routerOptions: ExtraOptions = {
+  anchorScrolling: "enabled"
+  //scrollPositionRestoration: "enabled"
+};
+@NgModule({
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule,
+    RouterModule.forRoot(routes, routerOptions)
+  ],
+  declarations: [AppComponent, HelloComponent],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+
+
+//COMPONENTE LIST AND SCROLL BODY SIMILAR (VERTICAL)
+/*************************************************  html  *************************************************/
+<div fxLayout="row">
+  <div fxFlex="4">
+    <mat-selection-list #shoes [multiple]="false">
+      <mat-list-option (click)="msg()">
+        <mat-icon mat-list-icon>home</mat-icon>
+      </mat-list-option>
+
+      <mat-list-option>
+        <mat-icon mat-list-icon>location_on</mat-icon>
+      </mat-list-option>
+      <mat-list-option>
+        <mat-icon mat-list-icon>location_pin</mat-icon>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div fxFlex style="background-color: rgb(209, 208, 208)">Content</div>
+</div>
+
+
+
+//COMPONENTE client-list-view  dentro de COMPONENTE Pages/clientes/clientes.components.html
+arhivo el cual contiene app-client-list-view 
+/*************************************************  html  *************************************************/
+**-> <app-mi-card style="position: fixed; z-index: 90"></app-mi-card>    
+
+      <div style="width: 100%; height: 270px"></div>
+        <div class="grid-container" fxLayout="column" fxLayoutAlign="start">
+          <h4 fxLayoutAlign="start start">
+            Aqui viene el contenido del Cliente seleccionado y abajo la lista de sus
+            pedidos
+          </h4>
+
+          <h1 class="mat-h1">lista de Clientes</h1>
+
+          <!-- <app-client-form></app-client-form> -->
+
+          <h1 class="mat-h1">lista de pedidos de Cliente</h1>
+          
+**->      <!-- lista de clientes -->
+          <app-client-list-view *ngFor="let cliente of clientes" [cliente]="cliente">
+          </app-client-list-view>
+      </div>
+
+

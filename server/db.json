@@ -1,0 +1,263 @@
+{
+
+    "category": [
+        { "id": 10, "name": "talonario"},
+        { "id": 11, "name": "office"}
+    ],
+
+    "product": [
+        { "id": 1, "name": "factura", "price": 0, "category_id": 10 },
+        { "id": 2, "name": "recibo", "price": 0, "category_id": 10 },
+        { "id": 3, "name": "proforma", "price": 0, "category_id": 10 },
+        { "id": 4, "name": "membretado", "price": 0,"category_id": 11 },
+        { "id": 5, "name": "tarjeta", "price": 0, "category_id": 11 }
+    ],
+
+    "product_setting": [
+        {"product_id": 1, "variant_id": 1},
+        {"product_id": 1, "variant_id": 2},
+        {"product_id": 1, "variant_id": 3},
+        {"product_id": 1, "variant_id": 4},
+        {"product_id": 1, "variant_id": 5},
+        {"product_id": 1, "variant_id": 6},
+        {"product_id": 1, "variant_id": 7},
+
+        {"product_id": 2, "variant_id": 1},
+        {"product_id": 2, "variant_id": 2},
+        {"product_id": 2, "variant_id": 3},
+        {"product_id": 2, "variant_id": 4},
+        {"product_id": 2, "variant_id": 5},
+        {"product_id": 2, "variant_id": 6},
+        {"product_id": 2, "variant_id": 7},
+
+        {"product_id": 3, "variant_id": 1},
+        {"product_id": 3, "variant_id": 2},
+        {"product_id": 3, "variant_id": 3},
+        {"product_id": 3, "variant_id": 4},
+        {"product_id": 3, "variant_id": 5},
+        {"product_id": 3, "variant_id": 6},
+        {"product_id": 3, "variant_id": 7},
+
+        {"product_id": 4, "variant_id": 1},
+        {"product_id": 4, "variant_id": 2},
+        {"product_id": 4, "variant_id": 6},
+
+        {"product_id": 5, "variant_id": 1},
+        {"product_id": 5, "variant_id": 2},
+        {"product_id": 5, "variant_id": 3},
+        {"product_id": 5, "variant_id": 6},
+        {"product_id": 5, "variant_id": 8},
+        {"product_id": 5, "variant_id": 9},
+        {"product_id": 5, "variant_id": 10}
+    ],
+
+    "variant": [
+        { "id": 1, "name": "size"},
+        { "id": 2, "name": "color"},
+        { "id": 3, "name": "grammage"},
+        { "id": 4, "name": "qtyCopy"},
+        { "id": 5, "name": "materialCopy"},
+        { "id": 6, "name": "orientation"},
+        { "id": 7, "name": "enumeration"},
+        { "id": 8, "name": "plastificado"},
+        { "id": 8, "name": "sectorizado"},
+        { "id": 10, "name": "troquel"}
+    ],
+
+    "variantOption": [
+        { "id": 101, "value": "1/2", "variant_id": 1},
+        { "id": 102, "value": "1/4", "variant_id": 1},
+        { "id": 103, "value": "prevalorada", "variant_id": 1},
+        { "id": 104, "value": "carta", "variant_id": 1},
+        { "id": 105, "value": "oficio", "variant_id": 1},
+        { "id": 106, "value": "memo", "variant_id": 1},
+        { "id": 108, "value": "90mm x 50mm", "variant_id": 1},
+        { "id": 100, "value": "azul", "variant_id": 2},
+        { "id": 110, "value": "rojo/morado", "variant_id": 2},
+        { "id": 111, "value": "verde/verde-claro/negro", "variant_id": 2},
+        { "id": 112, "value": "full-color", "variant_id": 2},
+        { "id": 113, "value": "60", "variant_id": 3},
+        { "id": 114, "value": "75", "variant_id": 3},
+        { "id": 115, "value": "90", "variant_id": 3},
+        { "id": 116, "value": "1", "variant_id": 4},
+        { "id": 117, "value": "2", "variant_id": 4},
+        { "id": 118, "value": "3", "variant_id": 4},
+        { "id": 118, "value": "4", "variant_id": 4},
+        { "id": 118, "value": "quimico", "variant_id": 5},
+        { "id": 118, "value": "normal", "variant_id": 5},
+        { "id": 118, "value": "horizontal", "variant_id": 6},
+        { "id": 118, "value": "vertical", "variant_id": 6},
+        { "id": 118, "value": "brillo", "variant_id": 8},
+        { "id": 118, "value": "mate", "variant_id": 8}
+    ],
+
+    "sucursales": [
+        {
+            "idSucursal": 1,
+            "nombre": "taller",
+            "direccion": "av. uruguay",
+            "idUsuarioEmpAsignado": 10,
+            "idPedidos": [],
+            "idPromotoresUsr": []
+        },{
+            "idSucursal": 2,
+            "nombre": "Ballivian",
+            "direccion": "avenida ballivian esquina colon",
+            "idUsuarioEmpAsignado": 12,
+            "idPedidos": [10, 11, 12],
+            "idPromotoresUsr": [11]
+        }
+        ,{
+            "idSucursal": 2,
+            "nombre": "Ballivian",
+            "direccion": "avenida ballivian esquina colon",
+            "idUsuarioEmpAsignado": 12,
+            "idPedidos": [10, 11, 12],
+            "idPromotoresUsr": [11]
+        }
+        ,{
+            "idSucursal": 2,
+            "nombre": "Ballivian",
+            "direccion": "avenida ballivian esquina colon",
+            "idUsuarioEmpAsignado": 12,
+            "idPedidos": [10, 11, 12],
+            "idPromotoresUsr": [11]
+        }
+    ],
+
+    "empleadoUsuario": [
+        {
+            "idEmpleado": 10,
+            "nombres": "javier tito",
+            "apellidos": "yupanqui soria",
+            "fotografia": "//url",
+            "idSucursal": 100,
+            "cargo": "tipografo",
+            "fInicio": "01/05/2018",
+            "fFin": "",
+            "salario": 2200,
+            "permisosUsr": "limitados",
+            "idAsistencia": 10
+        },{
+            "idEmpleado": 11,
+            "nombres": "wisin antony",
+            "apellidos": "canaviri sullcata",
+            "fotografia": "//url",
+            "idSucursal": 100,
+            "cargo": "operador",
+            "fInicio": "01/05/2019",
+            "fFin": "",
+            "salario": 2080,
+            "permisosUsr": "limitados",
+            "idAsistencia": 11
+        },{
+            "idEmpleado": 12,
+            "nombres": "marlene dory",
+            "apellidos": "sotomayor nemowski",
+            "fotografia": "//url",
+            "idSucursal": 101,
+            "cargo": "recepcion",
+            "fInicio": "01/09/2020",
+            "fFin": "",
+            "salario": 2080,
+            "permisosUsr": "limitados",
+            "idAsistencia": 11
+        }
+    ],
+
+    "clientes": [
+        {
+            "idCliente": 1,
+            "nombres": "juan Andres",
+            "apellidos": "alcon alzado",
+            "nit": 654812354,
+            "celular": 7565234,
+            "direcciones": [{
+                "CASA MATRIZ" : "Av. buenos aires zona san martin de porras nro 400 entre av. juan jacinto la paz - bolivia 1"
+            }],
+            "actividad": "actividades juridicas",
+            
+            "contador": 101,
+            "modelos": ["link of image 1", "link of image 2"],
+            "pedidos": [1, 2]
+        },{
+            "idCliente": 2,
+            "nombres": "Alan Brito",
+            "apellidos": "Delgado Vera",
+            "nit": 987543152,
+            "celular": 65845684,
+            "direcciones": [{
+                "CASA MATRIZ" : "Av. Buenuca zona san martin de porras nro 400 entre av. juan jacinto la paz - bolivia 1"
+            }],
+            "actividad": "Actividad de medicos y odontologos",
+            
+            "contador": 0,
+            "modelos": ["link of image 1", "link of image 2"],
+            "pedidos": [3, 4, 5]
+        },{
+            "idCliente": 3,
+            "nombres": "FUTURE INVERSORS SRL",
+            "apellidos": "",
+            "nit": 558722254,
+            "celular": 73541265,
+            "direcciones": [{
+                "CASA MATRIZ" : "Av. Buenuca zona san martin de porras nro 400 entre av. juan jacinto la paz - bolivia 1"
+            }],
+            "actividad": "Actividades de comisionistas",
+            
+            "contador": 101,
+            "modelos": ["link of image 1", "link of image 2"],
+            "pedidos": [6, 7]
+        }
+    ],
+
+
+    "pedidos": [
+        {
+            "idPedido": 10,
+            "cantidad": 20,
+            "adelantoProd": 5,
+            "fechaPedido": "24/03/2022",
+            "horaPedido": "14:00",
+            "fechaEntrega": "25/03/2022",
+            "horaEntrega": "17:00",
+            "estado": "proceso",
+            "anticipo": 250,
+            "montoTotal": 950,
+
+            "idCliente": 1,
+            "idSucursal": 2,
+            "idProducto": -1
+        },{
+            "idPedido": 11,
+            "cantidad": 200,
+            "adelantoProd": 50,
+            "fechaPedido": "25/03/2022",
+            "horaPedido": "09:12",
+            "fechaEntrega": "26/03/2022",
+            "horaEntrega": "10:00",
+            "estado": "proceso",
+            "anticipo": 1500,
+            "montoTotal": 6000,
+
+            "idCliente": 2,
+            "idSucursal": 11,
+            "idProducto": -2
+        },{
+            "idPedido": 12,
+            "cantidad": 1000,
+            "adelantoProd": 50,
+            "fechaPedido": "25/03/2022",
+            "horaPedido": "10:20",
+            "fechaEntrega": "26/03/2022",
+            "horaEntrega": "10:00",
+            "estado": "proceso",
+            "anticipo": 2000,
+            "montoTotal": 10000,
+
+            "idCliente": 3,
+            "idSucursal": 2,
+            "idProducto": -3
+        }
+    ]
+}
