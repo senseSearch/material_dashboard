@@ -1,7 +1,8 @@
-import { Attributes } from "./alternative/Attributes.interface";
-import { Product } from "./alternative/Product.model";
+import { Properties } from './Properties.interface';
 
-export interface Category{
-    idCategory: number,
-    categoryName: string
+export interface Category {
+    idCategory: number;
+    name: string;
+    props: Properties;
+    subCategory: string;          //talonario | membretado
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Talonario } from 'src/app/model/stockProducts/Talonario.interface';
+import { Talonario } from '../../model/stockProducts/Properties.interface';
 import { ProductService } from 'src/app/services/product.service';
 
 /* 
@@ -53,6 +53,9 @@ export class TableComponent implements OnInit {
     /* this.prodService.getProducts().subscribe((datas: Talonario[]) => {
       //this.productos = datas;
       console.log('------- Products -------', this.productos);
+      que te puedo decir con una de las cosas mas importantes de la actualidad
+      hoy estuvo nose porque me sentia algo liviano
+      semi relajado, asi es como me senti....
     }); */
 
     /*
